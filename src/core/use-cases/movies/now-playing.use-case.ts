@@ -9,8 +9,6 @@ export const moviesNowPlayingUseCase= async( fetcher: HttpAdapater ):Promise<Mov
     try {
         const nowPlaying = await fetcher.get<NowPlayingResponse>('/now_playing');
 
-        console.log({nowPlaying});
-
         return nowPlaying.results.map( result=> MovieMapper.fromMovieDBResultToEntity( result ) )
 
     } catch (error) {
